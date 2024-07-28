@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO - DO LIST</title>
+</head>
+<body>
+    <div id="container">
+        <h1>TO - DO LIST🎀</h1>
+        <input id="inputbox" type="text" placeholder="Enter a new task">
+        <button id="btn">Add</button>
+        <ul id="list"></ul>
+    </div>
+
+    <script>
+        // Get references to the DOM elements
+        var inputbox = document.getElementById("inputbox");
+        var btn = document.getElementById("btn");
+        var list = document.getElementById("list");
+
+        // Apply initial styles using JavaScript
+        document.body.style.fontFamily = 'Arial, sans-serif';
+        document.body.style.backgroundColor = '#F17FA2';
+        document.body.style.margin = '0';
+        document.body.style.padding = '0';
+        document.body.style.display = 'flex';
+        document.body.style.justifyContent = 'center';
+        document.body.style.alignItems = 'center';
+        document.body.style.height = '100vh';
+
+        var container = document.getElementById("container");
+        container.style.backgroundColor = '#ffbedd';
+        container.style.borderRadius = '8px';
+        container.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.1)';
+        container.style.padding = '20px';
+        container.style.width = '300px';
+        container.style.textAlign = 'center';
+
+        var h1 = document.querySelector('h1');
+        h1.style.fontSize = '24px';
+        h1.style.marginBottom = '20px';
+        h1.style.color = '#88085c';
+
+        var input = document.getElementById("inputbox");
+        input.style.width = 'calc(100% - 82px)'; // Adjusted width to fit with button
+        input.style.padding = '10px';
+        input.style.border = '1px solid #EC4899';
+        input.style.borderRadius = '4px';
+        input.style.marginRight = '10px';
+
+        var button = document.getElementById("btn");
+        button.style.padding = '10px 15px';
+        button.style.border = 'none';
+        button.style.borderRadius = '4px';
+        button.style.cursor = 'pointer';
+        button.style.backgroundColor = '#DB2777';
+        button.style.color = 'white';
+        button.style.fontSize = '16px';
+
+        button.addEventListener("mouseover", function() {
+            button.style.backgroundColor = '#DB2777';
+        });
+
+        button.addEventListener("mouseout", function() {
+            button.style.backgroundColor = '#DB2777';
+        });
+
+        btn.addEventListener("click", function() {
+            var taskText = inputbox.value.trim();
+            if (taskText) {
+                var li = document.createElement("li");
+                li.style.backgroundColor = '#f9f9f9';
+                li.style.margin = '10px 0';
+                li.style.padding = '10px';
+                li.style.borderRadius = '4px';
+                li.style.display = 'flex';
+                li.style.justifyContent = 'space-between';
+                li.style.alignItems = 'center';
+                
+                var taskContent = document.createTextNode(taskText);
+                li.appendChild(taskContent);
+
+                var deleteBtn = document.createElement("button");
+                deleteBtn.textContent = 'Delete';
+                deleteBtn.style.backgroundColor = '#db61a2';
+                deleteBtn.style.border = 'none';
+                deleteBtn.style.color = '#fff';
+                deleteBtn.style.cursor = 'pointer';
+                deleteBtn.style.padding = '5px 10px';
+                deleteBtn.style.fontSize = '14px';
+                deleteBtn.style.borderRadius = '4px';
+                
+                deleteBtn.addEventListener("mouseover", function() {
+                    deleteBtn.style.backgroundColor = '#c82333';
+                });
+
+                deleteBtn.addEventListener("mouseout", function() {
+                    deleteBtn.style.backgroundColor = '#db61a2';
+                });
+
+                deleteBtn.addEventListener("click", function() {
+                    li.remove();
+                });
+
+                li.appendChild(deleteBtn);
+                list.appendChild(li);
+                inputbox.value = ''; // Clear the input box
+            }
+        });
+    </script>
+</body>
+</html>
